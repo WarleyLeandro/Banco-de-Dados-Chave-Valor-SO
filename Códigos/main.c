@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <time.h>
 
 //TODO: transformar data em um array de string
 
@@ -35,7 +37,9 @@ int main(){
     printf("%ls", &myBD.newRow.id);
 
     int opcao=1;
-
+    time_t inicio = time(0);
+    time_t fim = time(0);
+    time_t total;
 
     while(opcao!=0)
     {
@@ -109,6 +113,7 @@ int main(){
    
 
 int removeValue(int key, BD BD) {
+    time ( &inicio );
     for (int i = key; i < BD.newRow.id; i++)
     {
         if (key == BD.newRow.id)
@@ -117,27 +122,38 @@ int removeValue(int key, BD BD) {
             return 1;
         }        
     } 
+    time ( &final );
+    time (&total = &final - &inicio );
+    printf("\n Tempo demorado : %s",ctime(&total));
     return 0;
 }
 
 int search(int key, BD BD) {
+    time ( &inicio );
     for (int i = key; i < BD.newRow.id; i++)
     {
         if (key == BD.newRow.id)
         {
             return BD.newRow.data;
         }        
-    }    
+    }     
+    time ( &final );
+    time (&total = &final - &inicio );
+    printf("\n Tempo demorado : %s",ctime(&total));   
     return 0;
 };
 
 int update(int key, char value, BD BD) {
+    time ( &inicio );
     for (int i = key; i < BD.newRow.id; i++)
     {
         if (key == BD.newRow.id)
         {
             BD.newRow.data = value;
         }        
-    }    
+    }       
+    time ( &final );
+    time (&total = &final - &inicio );
+    printf("\n Tempo demorado : %s",ctime(&total));    
     return 0;
 }

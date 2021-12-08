@@ -1,22 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int insert(int key, char value, BD BD),
-    remove(int key, BD BD),
-    search(int key, BD BD),
-    update(int key, char value, BD BD);
+//TODO: transformar data em um array de string
 
-int main()
-{
+    typedef struct
+    {
+        int id;
+        char type;
+        char data;
+        
+    } Row;
+    
+    typedef struct
+    {
+        Row newRow;
+
+    } BD;
+    
+    
+int insert(int key, char value, BD BD);
+int removeValue(int key, BD BD);
+int  search(int key, BD BD);
+int  update(int key, char value, BD BD);
+
+int main(){
+
+    printf("aaaaaaaaaaaaaa");
 
     BD myBD;
     myBD.newRow.id = 1;
     myBD.newRow.type = 'a';
     myBD.newRow.data = 'b';
 
-    printf("%d", &myBD.newRow.id);
-
-    return 1;
+    printf("%ls", &myBD.newRow.id);
 
     int opcao=1;
 
@@ -90,31 +106,9 @@ int main()
     return 0;
 }
 
-   //TODO: transformar data em um array de string
+   
 
-    typedef struct
-    {
-        int id;
-        char type;
-        char data;
-        
-    } Row;
-    
-    typedef struct
-    {
-        Row newRow;
-
-    } BD;
-    
-    
-
-
-int insert(int key, char value, BD BD) {
-
-    return 1;
-}
-
-int remove(int key, BD BD) {
+int removeValue(int key, BD BD) {
     for (int i = key; i < BD.newRow.id; i++)
     {
         if (key == BD.newRow.id)
@@ -123,7 +117,7 @@ int remove(int key, BD BD) {
             return 1;
         }        
     } 
-    return -1;
+    return 0;
 }
 
 int search(int key, BD BD) {
@@ -134,7 +128,7 @@ int search(int key, BD BD) {
             return BD.newRow.data;
         }        
     }    
-    return -1;
+    return 0;
 };
 
 int update(int key, char value, BD BD) {
@@ -145,5 +139,5 @@ int update(int key, char value, BD BD) {
             BD.newRow.data = value;
         }        
     }    
-    return -1;
+    return 0;
 }

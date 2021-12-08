@@ -27,7 +27,6 @@ int  update(int key, char value, BD BD);
 
 int main(){
 
-    printf("aaaaaaaaaaaaaa");
 
     BD myBD;
     myBD.newRow.id = 1;
@@ -36,11 +35,12 @@ int main(){
 
     printf("%ls", &myBD.newRow.id);
 
-    int opcao=1;
-    time_t inicio = time(0);
-    time_t fim = time(0);
-    time_t total;
+    
+    // time_t inicio = time(0);
+    // time_t fim = time(0);
+    // time_t total;
 
+    int opcao=1;
     while(opcao!=0)
     {
         printf("**********OPCOES**********");
@@ -110,10 +110,12 @@ int main(){
     return 0;
 }
 
-   
+   // time ( &inicio );
+    // time ( &final );
+    // time (&total = &final - &inicio );
 
 int removeValue(int key, BD BD) {
-    time ( &inicio );
+    
     for (int i = key; i < BD.newRow.id; i++)
     {
         if (key == BD.newRow.id)
@@ -122,38 +124,29 @@ int removeValue(int key, BD BD) {
             return 1;
         }        
     } 
-    time ( &final );
-    time (&total = &final - &inicio );
-    printf("\n Tempo demorado : %s",ctime(&total));
     return 0;
 }
 
 int search(int key, BD BD) {
-    time ( &inicio );
+    
     for (int i = key; i < BD.newRow.id; i++)
     {
         if (key == BD.newRow.id)
         {
             return BD.newRow.data;
         }        
-    }     
-    time ( &final );
-    time (&total = &final - &inicio );
-    printf("\n Tempo demorado : %s",ctime(&total));   
+    }       
     return 0;
 };
 
 int update(int key, char value, BD BD) {
-    time ( &inicio );
+    
     for (int i = key; i < BD.newRow.id; i++)
     {
         if (key == BD.newRow.id)
         {
             BD.newRow.data = value;
         }        
-    }       
-    time ( &final );
-    time (&total = &final - &inicio );
-    printf("\n Tempo demorado : %s",ctime(&total));    
+    }          
     return 0;
 }

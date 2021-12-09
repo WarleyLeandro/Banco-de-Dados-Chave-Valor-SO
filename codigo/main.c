@@ -8,7 +8,7 @@
     typedef struct
     {
         int id;
-        char type;
+        char sortKey;
         char data;
         
     } Row;
@@ -24,13 +24,14 @@ int insert(int key, char value, BD BD);
 int removeValue(int key, BD BD);
 int  search(int key, BD BD);
 int  update(int key, char value, BD BD);
+int list(int key, int fun, int searchParam, BD BD);
 
 int main(){
 
 
     BD myBD;
     myBD.newRow.id = 1;
-    myBD.newRow.type = 'a';
+    myBD.newRow.sortKey = 'a';
     myBD.newRow.data = 'b';
 
     printf("%ls", &myBD.newRow.id);
@@ -45,7 +46,7 @@ int main(){
     {
         printf("**********OPCOES**********");
         printf("\nEscolha uma das opcoes abaixo: ");
-        printf("\n1-Inserir\n2-Remover\n3-Buscar\n4-Atualizar\n0-Sair\nOpcao: ");
+        printf("\n1-Inserir\n2-Remover\n3-Buscar\n4-Atualizar\n5-Listar\n0-Sair\nOpcao: ");
         scanf("%d", &opcao);
 
         switch(opcao)
@@ -86,6 +87,15 @@ int main(){
 
             break;
 
+        case 5:
+
+            system("cls");
+            printf("Opcao Listar\n");
+            system("pause");
+            system("cls");
+
+            break;
+
         case 0:
 
             printf("\nSaindo do programa!\n");
@@ -113,6 +123,11 @@ int main(){
    // time ( &inicio );
     // time ( &final );
     // time (&total = &final - &inicio );
+int insert(int key, char value, BD BD) {
+    BD.newRow[key].data = value;
+    BD.newRow[key].id = key;
+}
+
 
 int removeValue(int key, BD BD) {
     
@@ -148,5 +163,30 @@ int update(int key, char value, BD BD) {
             BD.newRow.data = value;
         }        
     }          
+    return 0;
+}
+
+
+//fun == 0 list
+//fun == 1 reverse-list
+//searchParam: valor passado pelo user para comparação >=1
+
+int list(int key, int fun, int searchParam, BD BD) {
+    // int size =10;
+
+    // if(key > searchParam) {
+    //     for (int i = key; i < size; i++) {
+    //         printf("%ls", BD.newRow[i + 1].id);
+    //     }
+    // }
+
+    // if(fun == 0) {
+
+    // } else if(fun ==1) {
+
+    // } else {
+    //     return -1;
+    // }
+
     return 0;
 }
